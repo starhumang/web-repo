@@ -21,6 +21,10 @@ document.getElementById('saveBtn').onclick = function (e) {//생성자 함수
     let name = document.getElementById('name').value;
     let age = document.getElementById('age').value;
     let height = document.getElementById('height').value;
+	if(!name || !age || !height){
+		alert('값을 입력하세요');
+		return; //함수종료됨
+	}
 
     const mem = new Member(name, age, height); //생성자 입력 후 받아서 변하지 않는 변수로 모아서 mem을 만들었음.(생성자 함수에서 적어놓았기에 가능)
    
