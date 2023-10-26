@@ -2,8 +2,9 @@
 //객체형식으로 만듦
 
 const today = new Date();
+today.setDate(28);
 	console.log('오늘 날짜 : ', today.getDate());
-	// today.setDate(22);
+	
 	
 		const cal = { //1 객체로 함수가 3개
 
@@ -32,29 +33,38 @@ const today = new Date();
 				bd += '<tbody><tr>'
 
 				for (let i = 1; i <= 31; i++) {
-					//오늘 날짜는 백그라운드 : 노란색, 폰트 : bold;
-					
+					//오늘 날짜는 백그라운드 : 노란색, 폰트 : bold;					
 
-					if(i % 7 == 1 || i == 1){//일요일
-						styles = '"background: red; color : yellow;"'
+					if(i % 7 == 1 || i == 1){
+                        if(i == today.getDate()){ // 일요일 + 오늘
+                                styles = '"background-color : pink; font-weight = bolder;"'; // (배경 핑크, 글 진하게)
+                                bd += '<td style = ' + styles + 'align = "right;">' + i + '</td>' 
+                                styles = ''; 
+                        }else{//일요일
+						styles = '"background-color : red; color : yellow;"' // 그냥 일요일이면(배경 빨강, 글자 노랑)
+                        bd += '<td style = ' + styles + 'align = "right;">' + i + '</td>';  
+                        styles = '';                       
+                        }
+
+                    }else if(i % 7 == 0){
+                        if(i == today.getDate()){ // 토요일 + 오늘
+                                styles = '"background-color : pink; font-weight = bolder;"'; // (배경 핑크, 글 진하게)
+                                bd += '<td style = ' + styles + 'align = "right;">' + i + '</td>' 
+                                styles = ''; 
+                        }else{//토요일
+                        styles = '"background-color : blue; color : yellow;"' // 그냥 일요일이면(배경 빨강, 글자 노랑)
+                        bd += '<td style = ' + styles + 'align = "right;">' + i + '</td>';  
+                        styles = '';                       
+                        }
+
+                    }else if(i == today.getDate()){ //오늘                
+                        styles = '"background: yellow; font-weight: bolder;"';// (배경 노랑, 글 진하게)
                         bd += '<td style = ' + styles + 'align = "right;">' + i + '</td>';
-                        styles = '';
-                        //}
-						// else if( (i % 7 == 1)== today.getDate()){
-                        //     styles = '"background: red; color : yellow;'
-                        //     styles += 'font-weight = bolder;"';
-						//     bd += '<td style = ' + styles + 'align = "right;">' + i + '</td>'
+                        styles = '';  
 
-                        
-                        }else if(i == today.getDate()){ //오늘날짜  
-                            styles = '';                  
-                            styles = 'font-weight: bolder; background: yellow';
-                            bd += '<td style = ' + styles + 'align = "right;">' + i + '</td>';
-                            styles = '';  
-                            }else {//일반 날짜 
-                                styles = '';  
-                                bd += '<td style = ' + styles + 'align = "right;">' + i + '</td>';
-                            }
+                    }else {//일반 날짜  
+                        bd += '<td align = "right;">' + i + '</td>';
+                    }
                         
                     
                         

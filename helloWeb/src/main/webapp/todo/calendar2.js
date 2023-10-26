@@ -1,11 +1,12 @@
 //calendar.js
-//함수형식으로 만듦
+//과제 제출용
+//객체형식으로 만듦
 		
         const today = new Date();//오늘 날짜를 생성
         today.setDate(22);
         console.log('오늘날짜 : ' + today.getDate());//오늘날짜 가져옴
 
-        const cal = {		
+    const cal = {		
 
 	//머리 
         makeHead(){
@@ -78,6 +79,7 @@
         }
     }
     cal.showCalendar();
+    export{cal}
         
        
 

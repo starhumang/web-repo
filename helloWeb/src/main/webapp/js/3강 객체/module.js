@@ -1,6 +1,6 @@
 // module.js
 import{ friend, friendInfo} from './friends.js';
-import{ calendarObj } from '../todo/calendarObj.js';
+import{ cal } from '../todo/calendar2.js';
 
 const friend2 = { 
     name : "Hwang",
@@ -16,4 +16,4 @@ console.log(friend.showInfo());
 console.log(friendInfo(friend));
 
 
-calendarObj.showCalendar();
+calendar.showCalendar();
