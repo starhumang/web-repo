@@ -1,15 +1,15 @@
 //calendar.js
 //함수형식으로 만듦
-
-//calendar만들기 (table / thead에 요일 , tbody에 날짜)
-		//makeHead()
-		//makeBody()
-		//makeCalendar();얘를 호출하면 화면에 달력이 떠야함
 		
-		const day = ['일', '월', '화', '수', '목', '금','토'];
+        const today = new Date();//오늘 날짜를 생성
+        today.setDate(22);
+        console.log('오늘날짜 : ' + today.getDate());//오늘날짜 가져옴
+
+        const cal = {		
 
 	//머리 
-        function makeHead(){
+        makeHead(){
+            const day = ['일', '월', '화', '수', '목', '금','토'];
             let head = '<thead>';
             head += '<tr>';
             day.forEach(function(value){
@@ -19,21 +19,20 @@
             head += '</tr>';
             head += '</thead>';
             return head;
-        }
+        },
         
        //  ★★★교수님 reduce 쓰신거★★★  //days.reduce((acc, day)=>{return acc + '<th>' + day + '</th>'; }, '<thead><tr>')
        // '<thead><tr>'를 초기값(acc)로 넣어두고 ('<th>' + day + '</th>';) 이 부분을 7번 반복후 acc에 누적시켜 사용함. 그리고 리턴시켜 함수 호출 시 리턴값이 나오도록 함.
         
 
         //오늘날짜면 색이 빨간색이 되도록 하기
-       const today = new Date();//오늘 날짜를 생성
-       today.setDate(26);
-       console.log('오늘날짜 : ' + today.getDate());//오늘날짜 가져옴
+       
       
 
 
 	//바디
-        function makeBody(){
+        makeBody(){
+        
             let body = '<tbody>';
             
             let a = '';
@@ -62,18 +61,24 @@
             }            
             body += '</tbody>';
             return body;
-        }
+        },
 
 
-        function makeCalendar(){
+        makeCalendar(){
            let str = '<table border = 1>'
-           str += makeHead();
-           str += makeBody();
+           str += this.makeHead();
+           str += this.makeBody();
            str += '</table>'
-           document.getElementById("show").innerHTML = str;
-        }
+           return str
+           
+        },
 
-        makeCalendar();//실행
+        showCalendar(){
+             document.getElementById("show").innerHTML = this.makeCalendar();
+        }
+    }
+    cal.showCalendar();
+        
        
 
 		
