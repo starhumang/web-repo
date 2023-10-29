@@ -22,17 +22,25 @@ function loadJson(){//MemberListServ2
 	console.log(result[0])
 	let titles = ["회원번호", "비번", "이름", "연락처"];
 	let dataAry = [];
-	result.foreach(ele =>{
-		let obj = { // 아마 순서만 맞으면 ㄱㅊ을 듯.
-			mid : ele[0].textContent,
-			pass : ele[1].textContent,
-			name : ele[2].textContent,
-			phone : ele[3].textContent,			
-		}
-		dataAry.push(obj);
-	})
+	
+	for(let ele of result){
+//		let obj = { 
+//			
+//			mid : ele.mid,
+//			pass : ele.pass,
+//			name : ele.name,
+//			phone : ele.phone,	
+//		}
+//		console.log(obj);
+//		dataAry.push(obj);
+		dataAry.push(ele);
+	}
+	
+	
 	let result2 = table.makeTable(titles, dataAry)// 위에서 만든 것들을 테이블 만들기 형식에 넣어주겠다.
+	console.log(result2);
 	document.getElementById("show").innerHTML = result2;
+}
 
 
 
@@ -112,4 +120,3 @@ setTimeout(function(){
 
 console.log(friends1);
 
-}
