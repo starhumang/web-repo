@@ -112,6 +112,4 @@ setTimeout(function(){
 
 console.log(friends1);
 
-
-
-	
+}
