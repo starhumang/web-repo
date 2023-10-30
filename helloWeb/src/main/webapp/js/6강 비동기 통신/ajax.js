@@ -17,12 +17,21 @@ xhtp.onload = loadJson; //데이터를 서버에서 요청하고 오면
 //JSON
 function loadJson(){//MemberListServ2
 	console.log(xhtp.responseText); // 문자열
-	let result = JSON.parse(xhtp.responseText); //문자열 타입을 배열 객체로 타입변환함
+	let result = JSON.parse(xhtp.responseText); //문자열 타입을 객체로 타입변환함
 	console.log(result); //배열
 	console.log(result[0])
 	let titles = ["회원번호", "비번", "이름", "연락처"];
 	let dataAry = [];
 	
+	// 교수님 작업
+//	result.forEach(member => {
+//		dataAry.push({
+//			mid: member.mid, pass: member.pass,
+//			name : member.name, phone: member.phone
+//		})
+//	})
+
+	//내 작업
 	for(let ele of result){
 //		let obj = { 
 //			
@@ -40,7 +49,7 @@ function loadJson(){//MemberListServ2
 	let result2 = table.makeTable(titles, dataAry)// 위에서 만든 것들을 테이블 만들기 형식에 넣어주겠다.
 	console.log(result2);
 	document.getElementById("show").innerHTML = result2;
-}
+}// end of onload
 
 
 

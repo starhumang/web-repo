@@ -19,7 +19,7 @@ import org.yedam.service.serviceImpl.MemberServiceImpl;
 /**
  * Servlet implementation class MemberListServ
  */
-@WebServlet("/MemberListServ2")
+@WebServlet("/MemberListServ2")// 주소에다가 이걸 치면 doGet이라는 메소드가 실행되는 원리
 public class MemberListServ2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -58,7 +58,7 @@ public class MemberListServ2 extends HttpServlet {
 			}
 		}
 		str += "]";	
-		out.print(str);
+		out.print(str); // 전부 다 문자열로 나옴 그래서 나중에 객체화 시키는 거임
 	}
 
 	/**

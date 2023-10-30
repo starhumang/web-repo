@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!-- 1. 실행하는 주소가 되는 곳 -->
+ajax.html -> ajax.js -> ajax2.js -> ModMemberServ -> MemberService(modifyMember) -> MemberServiceImpl
 
 <html>
 <head>
@@ -7,9 +8,52 @@
 <title>ajax.html</title>
 </head>
 <body>
+	<table border = "1">
+		<tr>
+			<th>아이디</th><td><input id="mid"></td>
+		</tr>
+		<tr>
+			<th>비밀번호</th><td><input id="pass" type="password"></td>
+		</tr>
+		<tr>
+			<th>이름</th><td><input id="name"></td>
+		</tr>
+		<tr>
+			<th>연락처</th><td><input id="phone"></td>
+		</tr>
+		<tr>
+			<td colspan="2"> 
+				<button id="addBtn" onclick="addMember()">등록</button>
+				<button id="modBtn" onclick="modMember()">수정</button>
+			</td>
+		</tr>
+	</table>
+	<hr>
 	<div id = "show"></div>
+	
+	<script>
+		function showInfo(e, obj){
+			console.log(e.target.parentElement); // e.target : td.
+			console.log(obj); // this : 
+			//tr의 하위 : 아이디, 비번, 이름, 연락처.
+			console.log(obj.children); //tr의 하위요소들인 td
+			let mid = obj.children[0].innerHTML;
+			let pass = obj.children[1].innerHTML;
+			let name = obj.children[2].innerHTML;
+			let phone = obj.children[3].innerHTML;
+			
+			document.getElementById('mid').value = mid; // input태그일 경우에만 value
+			document.getElementById('pass').value = pass;
+			document.getElementById('name').value = name;
+			document.getElementById('phone').value = phone;
+			
+		}
+	</script>
+	
 	<script type = "module" src = ajax.js></script>
+	<script type = "module" src = ajax2.js></script>
 	<!-- export하는 파일에는 타입을 적어줘야 한다--> 
 	<!-- <script src = ajaxModule.js></script> -->
+
 </body>
 </html>
