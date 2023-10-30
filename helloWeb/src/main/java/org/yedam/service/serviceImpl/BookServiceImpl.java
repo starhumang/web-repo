@@ -29,11 +29,11 @@ public class BookServiceImpl implements BookService {
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				BookVO bv = new BookVO();
-				bv.setBOOK_CODE(rs.getString("CODE"));
-				bv.setBOOK_TITLE(rs.getString("TITLE"));
-				bv.setBOOK_AUTHOR(rs.getString("AUTHOR"));
-				bv.setBOOK_PRESS(rs.getString("PRESS"));
-				bv.setBOOK_PRICE(rs.getInt("PRICE"));
+				bv.setBOOK_CODE(rs.getString("BOOK_CODE"));
+				bv.setBOOK_TITLE(rs.getString("BOOK_TITLE"));
+				bv.setBOOK_AUTHOR(rs.getString("BOOK_AUTHOR"));
+				bv.setBOOK_PRESS(rs.getString("BOOK_PRESS"));
+				bv.setBOOK_PRICE(rs.getInt("BOOK_PRICE"));
 				books.add(bv);
 			}
 			

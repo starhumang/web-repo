@@ -40,15 +40,18 @@ public class BookListServlet extends HttpServlet {
 			response.setContentType("text/json;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			String str = "[";
-			
+			int cnt = 0;
 			for(BookVO bv : list) {
 				str += "{";
 				str += "\"BOOK_CORD\":\"" + bv.getBOOK_CODE() + "\",";
 				str += "\"BOOK_TITLE\":\"" + bv.getBOOK_TITLE() + "\",";
 				str += "\"BOOK_AUTHOR\":\"" + bv.getBOOK_AUTHOR() + "\",";
 				str += "\"BOOK_PRESS\":\"" + bv.getBOOK_PRESS() + "\",";
-				str += "\"BOOK_PRICE\":\"" + bv.getBOOK_PRICE() + "\",";
+				str += "\"BOOK_PRICE\":\"" + bv.getBOOK_PRICE() + "\"";
 				str += "}";	
+				if(++cnt != list.size()) {
+					str += ",";
+				}
 			}
 			str += "]";
 			out.print(str);

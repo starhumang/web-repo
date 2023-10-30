@@ -34,24 +34,25 @@ public class BookListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-			BookService bService = new BookServiceImpl();
-			List<BookVO> list = bService.bookList();
-			
-			response.setContentType("text/json;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			String str = "[";
-			
-			for(BookVO bv : list) {
-				str += "{";
-				str += "\"BOOK_CORD\":\"" + bv.getBOOK_CODE() + "\",";
-				str += "\"BOOK_TITLE\":\"" + bv.getBOOK_TITLE() + "\",";
-				str += "\"BOOK_AUTHOR\":\"" + bv.getBOOK_AUTHOR() + "\",";
-				str += "\"BOOK_PRESS\":\"" + bv.getBOOK_PRESS() + "\",";
-				str += "\"BOOK_PRICE\":\"" + bv.getBOOK_PRICE() + "\",";
-				str += "}";	
-			}
-			str += "]";
-			out.print(str);
+			System.out.println("호출됨");
+//			BookService bService = new BookServiceImpl();
+//			List<BookVO> list = bService.bookList();
+//			
+//			response.setContentType("text/json;charset=utf-8");
+//			PrintWriter out = response.getWriter();
+//			String str = "[";
+//			
+//			for(BookVO bv : list) {
+//				str += "{";
+//				str += "\"BOOK_CORD\":\"" + bv.getBOOK_CODE() + "\",";
+//				str += "\"BOOK_TITLE\":\"" + bv.getBOOK_TITLE() + "\",";
+//				str += "\"BOOK_AUTHOR\":\"" + bv.getBOOK_AUTHOR() + "\",";
+//				str += "\"BOOK_PRESS\":\"" + bv.getBOOK_PRESS() + "\",";
+//				str += "\"BOOK_PRICE\":\"" + bv.getBOOK_PRICE() + "\",";
+//				str += "}";	
+//			}
+//			str += "]";
+//			out.print(str);
 		}
 	
 
