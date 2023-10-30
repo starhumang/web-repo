@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>test2.html</title>
+</head>
+
+<body>
+    <h3>11월</h3>
+    <div id = cal></div>
+    <script>
+        const novemberCal = {
+            makeDay() { //요일
+                const day = ['일','월','화','수','목','금','토'];
+                let a = '<thead>';
+                a += '<tr>';
+                day.forEach(function (ele) {
+                    a += '<th>' + ele + '</th>'
+                })
+                a += '</tr></thead>';
+                return a;
+            },
+
+
+
+            makeDate() {//날짜
+                let a = '';
+                let b = ''
+                a += '<tbody>'
+				a += '<tr><td></td><td></td><td></td><td align = "center">1</td><td align = "center">2</td><td align = "center">3</td><td align = "center">4</td></tr>'
+				//첫번째 주
+				
+				count = 0;
+                for (let i = 5; i <= 31; i++) {
+                    console.log(i);
+                    count ++;
+                    b += '<td align = "center" >' + i + '</td>';
+
+                    if (count % 7 == 0 || i == 30) { // 7일 단위로 끊기
+                        a += '<tr>' + b + '</tr>';
+                        b = '';
+                    }
+                }
+                return a;
+            },
+
+
+
+            makeCalendar() {//요일+날짜+양식
+                let a = '';
+                a += '<table border = 1>';
+                a += this.makeDay() + this.makeDate();
+                a += '</table>';
+                return a;
+            },
+
+            show() {//출력
+               return document.getElementById("cal").innerHTML = this.makeCalendar();
+            }
+        }
+
+        novemberCal.show();
+    </script>
+
+</body>
+
+</html>
