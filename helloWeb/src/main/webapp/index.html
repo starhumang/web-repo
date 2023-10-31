@@ -16,14 +16,31 @@
         <li>사과</li>
         <li>복숭아</li>
         <li>수박</li>
-        <li>감자</li>
-        <li>고구마</li>
     </ul>
     
-    <p>깃 추가 작업을 함.</p>
+    <p >깃 추가 작업을 함.</p>
     <p>a의 상태로 변경</p>
     <p>b의 상태로 변경합니다.</p>
-
+	
+	<script>
+		//수박을 메론으로 바꾸기
+		let body = document.querySelector('body'); //선택자
+		//console.log(body.children[5].children)[2].innerHTML = "메론"; // 수박을 메론으로 바꿈
+		//console.log(body.parentElement.innerHTML = "");
+		
+		
+		//li의 다섯번째 포도.
+		let li5 = document.createElement('li'); //li라는 속성을 만들겠다.
+		li5.innerHTML = '포도'; //li안에 포도라는 내용을 넣겠다.
+		console.log(li5);//포도 출력
+		document.querySelector('ul').appendChild(li5);//부모요소의 아래에 하위요소로 넣겠다.
+		
+		//<p class="fourth>"c의 상태변경 <p> 이라는 말 추가
+		let p4 = document.createElement('p');
+		p4.setAttribute('class', 'fourth') //아이디나 클래스 같은 속성을 넣을 수 있게 해주는 것
+		p4.innerHTML = 'c의 상태로 변경합니다';
+		document.querySelector('p:nth-of-type(3)').after(p4); // 'p:nth-of-type(3)'의 뒤에 p4를 만들겠다.
+	</script>
 
 </body>
 

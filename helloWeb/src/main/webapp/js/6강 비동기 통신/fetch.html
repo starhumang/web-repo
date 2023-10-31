@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>fetch.html</title>
+
+
+<div id = 'show'><div>
+<script type ="module" src = fetch.js></script>
+
+</head>
+
+<body>
+	<script>
+		//Promise 객체(fullfilled_처리완료, pending_처리중, rejected_처리가 안됐음)
+		const promise = new Promise(function(resolve){
+			setTimeout(function(){
+				console.log("실행")
+				resolve('Success');
+			}, 500);//매개값2개 들어감 (실행할 함수, 시간) 500초 있다가 이 함수를 실행하겠다.
+		});
+		
+		
+		//첫번째 매개값 (실행할 함수) : 정상적으로 처리 된 경우 then이라는 함수에 Success라는 값을 전달하겠다.
+		promise.then( (resolve) => {
+			console.log('then :', resolve);
+			return 'OK';// 리턴하면 또 다른 promise로 보내줄 수 있음
+		})
+		
+		
+		.then((result) => { //정상적으로 처리 된 경우 then이라는 함수에 OK라는 값을 전달하겠다.
+			console.log('2then:', result);
+			return message;//얘는 정의되지 않은거라 아래 catch에 잡힐거임
+		})
+		
+		
+		//정상적으로 처리되지 않은 경우
+		.catch((err) => {
+			console.log('error:', err);
+		})
+		
+	</script>
+
+</body>
+</html>
