@@ -50,7 +50,7 @@ function fetchCallback(result) {
         genTable(filterAry);
     }
 
-    genTable(rawData, ); //초기데이터로 인덱스 값이 10 이하인 것들 화면출력     
+    genTable(rawData); //초기데이터로 인덱스 값이 10 이하인 것들 화면출력     
     //let filterAry = rawData.filter((center, idx) => idx < 10);
     //genTable(filterAry);
 }
@@ -62,16 +62,21 @@ function genTable(rawData = [], page = 1) {
     //document.getElementById("show")와 같음
     document.querySelector('#show').innerHTML = '';
     
-    //한 페이지마다 보여줘야 할 데이터의 첫번째와 마지막을 계산하기.(page)
-    let startNo =(page -1) * 5;//인덱스랑 비교할것이기 때문에 마지막에 +1을 하지 않았음
+    //밑에 숫자 선택바가 1 ~ 5처럼 5단위로 나오게 만드는 작업.(page)
+    let startNo =(page -1) * 5;//인덱스랑 비교할것이기 때문에 마지막에 +1을 하지 않았음/ 5장씩
     let endNo = page * 5;
     
     
     //[숙제] 누를때마다 옆으로 한칸씩 선택바가 이동되도록 만드시오..(5칸 중 언제나 누른게 가운데 있어야 함(1번, 2번과 마지막번호, 마지막번호에서 앞은 제외) / 앞뒤로 2개 표시 )
     //첫번째, 마지막 페이지 = > 계산
     let totalCnt = rawData.length;
-    let lastPage = Math.ceil(totalCnt / 5); // 전체 데이터 길이 나누기 10. 소수점아래 올림으로 계산/찐 끝 페이지
-    let endPage = Math.ceil(page / 5) * 5; // 선택 끝 페이지(선택을 10페이지씩 나오게 하겠다.)
+    let lastPage = Math.ceil(totalCnt / 5); // 마지막 페이지가 속한 선택바 번호 : 전체 데이터 길이 나누기 10. 소수점아래 올림으로 계산/찐 끝 페이지
+    let endPage = 0;
+    if(page > 2){
+    	endPage = page + 2; // 선택 끝 페이지(선택을 5페이지씩 나오게 하겠다.)	
+	}else{
+		endPage = 5;
+	}
     let beginPage = endPage -4; //선택 시작페이지
     let prevPage = false , nextPage = false;
     if(beginPage > 1){//이전페이지가 있는 경우
@@ -92,7 +97,14 @@ function genTable(rawData = [], page = 1) {
 		aTag.setAttribute('href', '#');
 		aTag.innerHTML = "&laquo;";
 		aTag.addEventListener('click', function(e){
-			genTable(rawData, beginPage - 1); //이전페이지보다 1개 뺀 페이지로 이동하겠습니다
+			
+			if(page == 4 || page == 5){
+				genTable(rawData, page - 1); //현페이지보다 1개 뺀 페이지로 이동하겠습니다		
+			
+			}else{
+					genTable(rawData, beginPage - 3); //이전페이지보다 3개 뺀 페이지로 이동하겠습니다				
+			}
+			
 			})
 			document.querySelector('.pagination').append(aTag);
 	}
@@ -120,7 +132,13 @@ function genTable(rawData = [], page = 1) {
 			aTag.setAttribute('href', '#');
 			aTag.innerHTML = "&raquo;";
 			aTag.addEventListener('click', function(e){
-				genTable(rawData, endPage + 1);
+				
+			if(page == 1 || page == 2){
+				genTable(rawData, page + 5);
+			}else{
+				genTable(rawData, endPage + 3);
+				
+			}
 			})
 			document.querySelector('.pagination').append(aTag);
 		}
